@@ -8,12 +8,21 @@ describe("Header Component", () => {
     expect(headerElement).toBeInTheDocument();
   });
 
-  test("renders header image", () => {
+  test("renders header image with correct source", () => {
     render(<Header />);
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
 
+    const imageSource = image.getAttribute("src");
+    expect(imageSource).toBe("investment-calculator-logo.png");
+
     const imageAlt = screen.getByAltText(/logo/i);
     expect(imageAlt).toBeInTheDocument();
+  });
+
+  test("renders header with correct className", () => {
+    render(<Header />);
+    const headerElement = screen.getByRole("banner");
+    expect(headerElement).toHaveClass("header");
   });
 });
