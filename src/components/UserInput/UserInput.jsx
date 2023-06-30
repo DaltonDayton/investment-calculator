@@ -7,7 +7,7 @@ const initialUserInput = {
   duration: 10,
 };
 
-const UserInput = () => {
+const UserInput = (props) => {
   const [userInput, setUserInput] = useState({
     "current-savings": 10000,
     "yearly-contribution": 1200,
@@ -17,7 +17,8 @@ const UserInput = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // ...
+
+    props.onCalculate(userInput);
   };
 
   const resetHandler = (event) => {
